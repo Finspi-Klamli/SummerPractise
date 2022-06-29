@@ -2,6 +2,7 @@ package com.belov.jmixapplication.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import org.locationtech.jts.geom.Polygon;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +23,18 @@ public class DeliveryArea {
     @Column(name = "COLOR", nullable = false)
     @NotNull
     private String color;
+
+    @NotNull
+    @Column(name = "POLYGON", nullable = false)
+    private Polygon polygon;
+
+    public Polygon getPolygon() {
+        return polygon;
+    }
+
+    public void setPolygon(Polygon polygon) {
+        this.polygon = polygon;
+    }
 
     public String getColor() {
         return color;

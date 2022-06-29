@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.2.4'
+    bomVersion = '1.2.4.trial'
 }
 
 group = 'com.belov'
@@ -18,6 +18,12 @@ repositories {
     maven {
         url 'https://nexus.jmix.io/repository/public'
     }
+    maven {
+        url = 'file:/C:/Users/Finspi%20Klamli/IdeaProjects/SummerPractise/trial_repository/'
+    }
+    maven {
+        url = 'file:/C:/Users/Finspi%20Klamli/IdeaProjects/SummerPractise/trial_repository/'
+    }
 }
 
 dependencies {
@@ -26,7 +32,6 @@ dependencies {
     implementation 'io.jmix.ui:jmix-ui-starter'
     implementation 'io.jmix.ui:jmix-ui-data-starter'
     implementation 'io.jmix.ui:jmix-ui-themes-compiled'
-    implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
     implementation 'io.jmix.security:jmix-security-starter'
     implementation 'io.jmix.security:jmix-security-ui-starter'
     implementation 'io.jmix.security:jmix-security-data-starter'
@@ -41,8 +46,21 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    implementation("io.jmix.maps:jmix-maps-ui-starter")
+    implementation("io.jmix.maps:jmix-maps-starter")
+    widgets("io.jmix.maps:jmix-maps-ui-widgets")
+    widgets("io.jmix.ui:jmix-ui-widgets")
+    implementation("io.jmix.maps:jmix-maps-starter")
+    implementation("io.jmix.maps:jmix-maps-ui-starter")
+    widgets("io.jmix.maps:jmix-maps-ui-widgets")
+    widgets("io.jmix.ui:jmix-ui-widgets")
 }
 
 test {
     useJUnitPlatform()
+}
+
+compileWidgets {
+    generate "com.belov.jmixapplication.widgets.CustomWidgetSet"
+    includePaths("**/io/jmix/**/widget/**", "**/com/belov/jmixapplication/widgets/**")
 }

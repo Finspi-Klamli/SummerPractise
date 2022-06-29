@@ -1,10 +1,10 @@
 package com.belov.jmixapplication.entity;
 
-import com.belov.jmixapplication.entity.customtypes.GeoPoint;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,7 +12,10 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "RESTAURANT")
+@Table(name = "RESTAURANT", indexes = {
+        @Index(name = "IDX_RESTAURANT", columnList = "DELIVERY_ZONE_ID"),
+        @Index(name = "IDX_RESTAURANT_ADDRESS_ID", columnList = "ADDRESS_ID")
+})
 @Entity
 public class Restaurant {
     @JmixGeneratedValue
@@ -20,18 +23,52 @@ public class Restaurant {
     @Id
     private UUID id;
 
+    @Column(name = "COORDINATES", nullable = false)
+    @NotNull
+    private Point coordinates;
+
     @InstanceName
     @Column(name = "NAME", nullable = false)
     @NotNull
     private String name;
 
-    @Column(name = "COORDINATES", nullable = false)
+    @JoinColumn(name = "ADDRESS_ID", nullable = false)
     @NotNull
-    private GeoPoint coordinates;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    private Address address;
+
+    @JoinColumn(name = "DELIVERY_ZONE_ID")
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private DeliveryArea deliveryZone;
 
     @Composition
     @OneToMany(mappedBy = "restaurant")
     private List<Order> order;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public DeliveryArea getDeliveryZone() {
+        return deliveryZone;
+    }
+
+    public void setDeliveryZone(DeliveryArea deliveryZone) {
+        this.deliveryZone = deliveryZone;
+    }
 
     public List<Order> getOrder() {
         return order;
@@ -39,14 +76,6 @@ public class Restaurant {
 
     public void setOrder(List<Order> order) {
         this.order = order;
-    }
-
-    public GeoPoint getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(GeoPoint coordinates) {
-        this.coordinates = coordinates;
     }
 
     public String getName() {
