@@ -1,8 +1,11 @@
 package com.belov.jmixapplication.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.maps.Geometry;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,6 +23,11 @@ public class Order {
     @Id
     private UUID id;
 
+    @Geometry
+    @NotNull
+    @Column(name = "LOCATION", unique = true)
+    private Point location;
+
     @JoinColumn(name = "ADDRESS_ID", nullable = false)
     @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,7 +37,6 @@ public class Order {
     @NotNull
     private Boolean executionFlag = false;
 
-    @InstanceName
     @Column(name = "DESCRIPTION", length = 511)
     private String description;
 
@@ -37,6 +44,14 @@ public class Order {
     @JoinColumn(name = "RESTAURANT_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Restaurant restaurant;
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
 
     public Boolean getExecutionFlag() {
         return executionFlag;
@@ -77,5 +92,11 @@ public class Order {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"restaurant", "address"})
+    public String getInstanceName() {
+        return String.format("%s %s", restaurant, address);
     }
 }

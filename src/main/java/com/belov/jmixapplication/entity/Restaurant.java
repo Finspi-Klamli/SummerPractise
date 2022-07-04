@@ -4,6 +4,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.maps.Geometry;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Restaurant {
     @Id
     private UUID id;
 
+    @Geometry
     @Column(name = "COORDINATES", nullable = false)
     @NotNull
     private Point coordinates;
@@ -32,9 +34,8 @@ public class Restaurant {
     @NotNull
     private String name;
 
-    @JoinColumn(name = "ADDRESS_ID", nullable = false)
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ADDRESS_ID")
+    @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 
     @JoinColumn(name = "DELIVERY_ZONE_ID")

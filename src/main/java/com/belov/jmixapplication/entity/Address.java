@@ -1,6 +1,8 @@
 package com.belov.jmixapplication.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.Column;
@@ -23,7 +25,7 @@ public class Address {
     @NotNull
     private Integer home;
 
-    @Column(name = "STREET")
+    @Column(name = "STREET", unique = true)
     private String street;
 
     @Column(name = "LOCALITY", nullable = false)
@@ -95,5 +97,11 @@ public class Address {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"country", "region", "locality", "street", "home", "flat"})
+    public String getInstanceName() {
+        return String.format("%s %s %s %s %s %s", country, region, locality, street, home, flat);
     }
 }

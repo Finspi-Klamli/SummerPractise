@@ -4,6 +4,12 @@
     <menu id="application" caption="msg://com.belov.jmixapplication/menu.application" insertBefore="administration">
         <item screen="User.browse" caption="msg://com.belov.jmixapplication.screen.user/UserBrowse.caption"/>
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="Restaurant.browse"
+              caption="msg://com.belov.jmixapplication.screen.restaurant/restaurantBrowse.menu"/>
+        <item screen="Order_.browse" caption="msg://com.belov.jmixapplication.screen.order/orderBrowse.menu"/>
+        <item screen="Address.browse" caption="msg://com.belov.jmixapplication.screen.address/addressBrowse.menu"/>
+        <item screen="DeliveryArea.browse"
+              caption="msg://com.belov.jmixapplication.screen.deliveryarea/deliveryAreaBrowse.menu"/>
     </menu>
 
 </menu-config>
