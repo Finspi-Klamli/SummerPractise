@@ -42,7 +42,7 @@
                 width="800"/>
     <layout expand="restaurantsTable" spacing="true">
         <filter id="filter"
-                dataLoader="restaurantsDl">
+                dataLoader="restaurantsDl" visible="false">
             <properties include=".*"/>
         </filter>
         <groupTable id="restaurantsTable"
@@ -56,6 +56,7 @@
             <columns>
                 <column id="name"/>
                 <column id="coordinates"/>
+                <column id="address"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -65,7 +66,7 @@
                 <button id="removeBtn" action="restaurantsTable.remove"/>
             </buttonsPanel>
         </groupTable>
-        <maps:geoMap id="map" height="300px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
+        <maps:geoMap id="map" height="400" width="800px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers>
                 <maps:tile id="title" tileProvider="map_OpenStreetMap"/>
                 <maps:vector id="deliveryAreaLayer" dataContainer="deliveryAreaDc"/>

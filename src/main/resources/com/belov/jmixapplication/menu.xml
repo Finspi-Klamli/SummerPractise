@@ -7,7 +7,6 @@
         <item screen="Restaurant.browse"
               caption="msg://com.belov.jmixapplication.screen.restaurant/restaurantBrowse.menu"/>
         <item screen="Order_.browse" caption="msg://com.belov.jmixapplication.screen.order/orderBrowse.menu"/>
-        <item screen="Address.browse" caption="msg://com.belov.jmixapplication.screen.address/addressBrowse.menu"/>
         <item screen="DeliveryArea.browse"
               caption="msg://com.belov.jmixapplication.screen.deliveryarea/deliveryAreaBrowse.menu"/>
     </menu>

@@ -6,9 +6,7 @@
     <data>
         <instance id="restaurantDc"
                   class="com.belov.jmixapplication.entity.Restaurant">
-            <fetchPlan extends="_base">
-                <property name="address" fetchPlan="_base"/>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader/>
         </instance>
         <collection id="deliveryAreasDc"
@@ -50,12 +48,7 @@
             <column width="350px">
                 <textField id="coordinatesField" property="coordinates"/>
                 <textField id="nameField" property="name"/>
-                <entityPicker id="addressField" property="address">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
+                <textField id="addressField" property="address"/>
                 <entityPicker id="deliveryZoneField" property="deliveryZone">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>

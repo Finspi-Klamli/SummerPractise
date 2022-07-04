@@ -46,17 +46,11 @@
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="orderDc">
             <column width="350px">
-                <entityPicker id="addressField" property="address">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
+                <textField id="addressField" property="address"/>
                 <checkBox id="executionFlagField" property="executionFlag"/>
                 <textField id="descriptionField" property="description"/>
                 <textField id="locationField" property="location" visible="false"/>
                 <entitySuggestionField id="restaurantField" property="restaurant"/>
-
             </column>
         </form>
         <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">

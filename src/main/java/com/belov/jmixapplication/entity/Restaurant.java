@@ -14,7 +14,6 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "RESTAURANT", indexes = {
-        @Index(name = "IDX_RESTAURANT", columnList = ""),
         @Index(name = "IDX_RESTAURANT_ADDRESS_ID", columnList = "ADDRESS_ID")
 })
 @Entity
@@ -23,6 +22,10 @@ public class Restaurant {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @Column(name = "ADDRESS", nullable = false)
+    @NotNull
+    private String address;
 
     @Geometry
     @Column(name = "COORDINATES", nullable = false)
@@ -34,10 +37,6 @@ public class Restaurant {
     @NotNull
     private String name;
 
-    @JoinColumn(name = "ADDRESS_ID")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Address address;
-
     @JoinColumn(name = "DELIVERY_ZONE_ID")
     @Composition
     @OneToOne(fetch = FetchType.LAZY)
@@ -47,11 +46,11 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Order> order;
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

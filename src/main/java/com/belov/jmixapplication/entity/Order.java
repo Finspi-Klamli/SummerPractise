@@ -23,14 +23,14 @@ public class Order {
     @Id
     private UUID id;
 
+    @Column(name = "ADDRESS", nullable = false)
+    @NotNull
+    private String address;
+
     @Geometry
     @NotNull
     @Column(name = "LOCATION", unique = true)
     private Point location;
-
-    @JoinColumn(name = "ADDRESS_ID")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Address address;
 
     @Column(name = "EXECUTION_FLAG")
     private Boolean executionFlag = false;
@@ -43,6 +43,14 @@ public class Order {
     @JoinColumn(name = "RESTAURANT_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Restaurant restaurant;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public Point getLocation() {
         return location;
@@ -59,15 +67,6 @@ public class Order {
     public void setExecutionFlag(Boolean executionFlag) {
         this.executionFlag = executionFlag;
     }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
 
     public Restaurant getRestaurant() {
         return restaurant;
