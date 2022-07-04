@@ -39,8 +39,9 @@ public class Order {
     private String description;
 
 
-    @JoinColumn(name = "RESTAURANT_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @JoinColumn(name = "RESTAURANT_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Restaurant restaurant;
 
     public Point getLocation() {

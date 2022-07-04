@@ -51,7 +51,7 @@
                 width="800"/>
     <layout expand="ordersTable" spacing="true">
         <filter id="filter"
-                dataLoader="ordersDl">
+                dataLoader="ordersDl" visible="false">
             <properties include=".*"/>
         </filter>
         <groupTable id="ordersTable"

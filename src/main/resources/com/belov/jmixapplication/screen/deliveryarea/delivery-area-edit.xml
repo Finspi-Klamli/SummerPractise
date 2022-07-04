@@ -51,7 +51,7 @@
                              property="color"/>
             </column>
         </form>
-        <maps:geoMap id="map" height="300px" width="500px" centerX="-97.327194"  centerY="37.681918" zoom="12">
+        <maps:geoMap id="map" height="500px" width="1000px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers selectedLayer="deliveryAreaLayer">
                 <maps:tile id="tileLayer" tileProvider="map_OpenStreetMap"/>
                 <maps:vector id="deliveryAreaLayer"

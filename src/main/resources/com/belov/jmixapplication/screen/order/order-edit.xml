@@ -54,6 +54,7 @@
                 </entityPicker>
                 <checkBox id="executionFlagField" property="executionFlag"/>
                 <textField id="descriptionField" property="description"/>
+                <textField id="locationField" property="location" visible="false"/>
                 <entitySuggestionField id="restaurantField" property="restaurant"/>
 
             </column>
