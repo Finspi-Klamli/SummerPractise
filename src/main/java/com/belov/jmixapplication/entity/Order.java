@@ -28,21 +28,19 @@ public class Order {
     @Column(name = "LOCATION", unique = true)
     private Point location;
 
-    @JoinColumn(name = "ADDRESS_ID", nullable = false)
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ADDRESS_ID")
+    @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 
-    @Column(name = "EXECUTION_FLAG", nullable = false)
-    @NotNull
+    @Column(name = "EXECUTION_FLAG")
     private Boolean executionFlag = false;
 
     @Column(name = "DESCRIPTION", length = 511)
     private String description;
 
 
-    @JoinColumn(name = "RESTAURANT_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "RESTAURANT_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Restaurant restaurant;
 
     public Point getLocation() {
@@ -95,8 +93,8 @@ public class Order {
     }
 
     @InstanceName
-    @DependsOnProperties({"restaurant", "address"})
+    @DependsOnProperties({"description", "restaurant"})
     public String getInstanceName() {
-        return String.format("%s %s", restaurant, address);
+        return String.format("%s %s", description, restaurant.getName());
     }
 }

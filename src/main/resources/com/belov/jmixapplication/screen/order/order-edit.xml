@@ -9,6 +9,24 @@
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>
+        <collection id="restaurantsDc"
+                    class="com.belov.jmixapplication.entity.Restaurant">
+            <fetchPlan extends="_base"/>
+            <loader id="restaurantsDl">
+                <query>
+                    <![CDATA[select e from Restaurant e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="deliveryAreaDc"
+                    class="com.belov.jmixapplication.entity.DeliveryArea">
+            <fetchPlan extends="_base"/>
+            <loader id="deliveryAreasDl">
+                <query>
+                    <![CDATA[select d from DeliveryArea d]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -36,20 +54,18 @@
                 </entityPicker>
                 <checkBox id="executionFlagField" property="executionFlag"/>
                 <textField id="descriptionField" property="description"/>
-                <entityPicker id="restaurantField" property="restaurant">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
+                <entitySuggestionField id="restaurantField" property="restaurant"/>
+
             </column>
         </form>
-        <maps:geoMap id="map" height="400px" width="600px" centerX="-99.755859" centerY="39.164141" zoom="4">
+        <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers selectedLayer="orderLayer">
                 <maps:tile id="tileLayer" tileProvider="map_OpenStreetMap"/>
                 <maps:vector id="orderLayer"
                              dataContainer="orderDc"
                              editable="true"/>
+                <maps:vector id="restaurantLayer" dataContainer="restaurantsDc"/>
+                <maps:vector id="deliveryAreaLayer" dataContainer="deliveryAreaDc"/>
             </maps:layers>
         </maps:geoMap>
         <hbox id="editActions" spacing="true">
