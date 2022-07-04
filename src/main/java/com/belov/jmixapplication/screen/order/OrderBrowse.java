@@ -1,13 +1,7 @@
 package com.belov.jmixapplication.screen.order;
 
-import com.belov.jmixapplication.entity.DeliveryArea;
-import io.jmix.mapsui.component.GeoMap;
-import io.jmix.mapsui.component.layer.TileLayer;
-import io.jmix.mapsui.component.layer.VectorLayer;
-import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.screen.*;
 import com.belov.jmixapplication.entity.Order;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @UiController("Order_.browse")
 @UiDescriptor("order-browse.xml")

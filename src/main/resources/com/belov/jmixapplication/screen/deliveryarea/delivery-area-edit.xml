@@ -9,6 +9,15 @@
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>
+        <collection id="deliveryAreasDc"
+                    class="com.belov.jmixapplication.entity.DeliveryArea">
+            <fetchPlan extends="_base"/>
+            <loader id="deliveryAreasDl">
+                <query>
+                    <![CDATA[select d from DeliveryArea d]]>
+                </query>
+            </loader>
+        </collection>
         <collection id="restaurantsDc"
                     class="com.belov.jmixapplication.entity.Restaurant">
             <fetchPlan extends="_base"/>
@@ -32,8 +41,8 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="300"
+                width="600"/>
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="deliveryAreaDc">
             <column width="350px">
@@ -42,13 +51,14 @@
                              property="color"/>
             </column>
         </form>
-        <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
+        <maps:geoMap id="map" height="300px" width="500px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers selectedLayer="deliveryAreaLayer">
                 <maps:tile id="tileLayer" tileProvider="map_OpenStreetMap"/>
                 <maps:vector id="deliveryAreaLayer"
                              dataContainer="deliveryAreaDc"
                              editable="true"/>
                 <maps:vector id="restaurantLayer" dataContainer="restaurantsDc"/>
+                <maps:vector id="deliveryAreasLayer" dataContainer="deliveryAreasDc"/>
             </maps:layers>
         </maps:geoMap>
         <hbox id="editActions" spacing="true">

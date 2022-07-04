@@ -11,6 +11,24 @@
             </fetchPlan>
             <loader/>
         </instance>
+        <collection id="deliveryAreasDc"
+                    class="com.belov.jmixapplication.entity.DeliveryArea">
+            <fetchPlan extends="_base"/>
+            <loader id="deliveryAreasDl">
+                <query>
+                    <![CDATA[select d from DeliveryArea d]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="restaurantsDc"
+                    class="com.belov.jmixapplication.entity.Restaurant">
+            <fetchPlan extends="_base"/>
+            <loader id="restaurantsDl">
+                <query>
+                    <![CDATA[select e from Restaurant e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -52,6 +70,8 @@
                 <maps:vector id="restaurantLayer"
                              dataContainer="restaurantDc"
                              editable="true"/>
+                <maps:vector id="restaurantsLayer" dataContainer="restaurantsDc"/>
+                <maps:vector id="deliveryAreaLayer" dataContainer="deliveryAreasDc"/>
             </maps:layers>
         </maps:geoMap>
         <hbox id="editActions" spacing="true">t

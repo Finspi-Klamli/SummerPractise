@@ -56,13 +56,6 @@
                 <button id="removeBtn" action="deliveryAreasTable.remove"/>
             </buttonsPanel>
         </groupTable>
-        <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
-            <maps:layers selectedLayer="deliveryAreaLayer">
-                <maps:tile id="tileLayer" tileProvider="map_OpenStreetMap"/>
-                <maps:vector id="deliveryAreaLayer"
-                             dataContainer="deliveryAreaDc"/>
-            </maps:layers>
-        </maps:geoMap>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

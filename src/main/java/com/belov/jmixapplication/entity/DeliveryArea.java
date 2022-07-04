@@ -1,6 +1,7 @@
 package com.belov.jmixapplication.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.maps.Geometry;
 import org.locationtech.jts.geom.Polygon;
@@ -21,6 +22,7 @@ public class DeliveryArea {
     @Id
     private UUID id;
 
+    @InstanceName
     @NotNull
     @Column(name = "COLOR", nullable = false)
     private String color;
@@ -53,4 +55,5 @@ public class DeliveryArea {
     public void setId(UUID id) {
         this.id = id;
     }
+
 }

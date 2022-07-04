@@ -19,7 +19,7 @@
             <fetchPlan extends="_base"/>
             <loader id="deliveryAreasDl">
                 <query>
-                    <![CDATA[select e from DeliveryArea e]]>
+                    <![CDATA[select d from DeliveryArea d]]>
                 </query>
             </loader>
         </collection>
@@ -54,8 +54,8 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="coordinates"/>
                 <column id="name"/>
+                <column id="coordinates"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -68,8 +68,8 @@
         <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers>
                 <maps:tile id="title" tileProvider="map_OpenStreetMap"/>
-                <maps:vector id="restaurantLayer" dataContainer="restaurantsDc"/>
                 <maps:vector id="deliveryAreaLayer" dataContainer="deliveryAreaDc"/>
+                <maps:vector id="restaurantLayer" dataContainer="restaurantsDc"/>
             </maps:layers>
         </maps:geoMap>
         <hbox id="lookupActions" spacing="true" visible="false">

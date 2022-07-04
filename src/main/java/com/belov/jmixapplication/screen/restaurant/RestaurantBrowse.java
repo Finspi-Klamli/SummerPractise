@@ -27,13 +27,16 @@ public class RestaurantBrowse extends StandardLookup<Restaurant> {
                 .setFillColor(String.format("#%s",deliveryArea.getColor()))
                 .setFillOpacity(0.4)
                 .setStrokeColor("#2CA860");
-
     }
-//
-//    @Install(to = "map.restaurantLayer", subject = "styleProvider")
-//    private GeometryStyle setRestaurantStyleProvider(Restaurant restaurant){
-//        return geometryStyles.point()
-//                .withFontIcon(JmixIcon.COFFEE)
-//                .setIconTextFillColor(String.format("#%s",restaurant.getDeliveryZone().getColor()));
-//    }
+
+    @Install(to = "map.restaurantLayer", subject = "styleProvider")
+    private GeometryStyle setRestaurantStyleProvider(Restaurant restaurant){
+        if(restaurant.getDeliveryZone() == null)
+            return geometryStyles.point()
+                    .withFontIcon(JmixIcon.SHOPPING_BASKET)
+                    .setIconPathFillColor("#343aeb");
+        return geometryStyles.point()
+                .withFontIcon(JmixIcon.SHOPPING_BASKET)
+                .setIconPathFillColor(String.format("#%s",restaurant.getDeliveryZone().getColor()));
+    }
 }
