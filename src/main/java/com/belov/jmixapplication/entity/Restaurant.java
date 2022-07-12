@@ -13,9 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "RESTAURANT", indexes = {
-        @Index(name = "IDX_RESTAURANT_ADDRESS_ID", columnList = "ADDRESS_ID")
-})
+@Table(name = "RESTAURANT")
 @Entity
 public class Restaurant {
     @JmixGeneratedValue

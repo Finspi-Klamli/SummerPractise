@@ -13,9 +13,7 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "ORDER_", indexes = {
-        @Index(name = "IDX_ORDER_RESTAURANT_ID", columnList = "RESTAURANT_ID"),
-        @Index(name = "IDX_ORDER_ADDRESS_ID", columnList = "ADDRESS_ID")
-})
+        @Index(name = "IDX_ORDER_RESTAURANT_ID", columnList = "RESTAURANT_ID")})
 @Entity(name = "Order_")
 public class Order {
     @JmixGeneratedValue
