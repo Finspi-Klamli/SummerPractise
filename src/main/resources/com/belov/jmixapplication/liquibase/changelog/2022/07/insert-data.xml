@@ -61,5 +61,10 @@
             <column name="LOCATION">East Boston Street 12</column>
             <column name="RESTAURANT_ID">815a2172-4190-46a3-8c81-02197f921135</column>
         </insert>
+        <insert tableName="USER_">
+            <column name="ID">879d1154-02de-11ed-b939-0242ac120002</column>
+            <column name="username">admin</column>
+            <column name="password">admin</column>
+        </insert>
     </changeSet>
 </databaseChangeLog>
