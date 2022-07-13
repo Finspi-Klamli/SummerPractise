@@ -13,7 +13,7 @@
             <column name="POLYGON">POLYGON ((-97.316208 37.676484, -97.314663 37.66113, -97.334747 37.656509, -97.343502 37.665478, -97.34333 37.677027, -97.316208 37.676484))</column>
         </insert>
         <insert tableName="DELIVERY_AREA">
-            <column name="ID">02ad5abf-20a7-4fde-2306-6154867a2e11</column>
+            <column name="ID">204dc4b4-612a-add0-fb85-d4ad8221b36a</column>
             <column name="COLOR">f8ff4a</column>
             <column name="POLYGON">POLYGON ((-97.344086 37.668454, -97.347656 37.657053, -97.346764 37.652921, -97.343193 37.649985, -97.329288 37.64985, -97.329803 37.667245, -97.344086 37.668454))</column>
         </insert>
