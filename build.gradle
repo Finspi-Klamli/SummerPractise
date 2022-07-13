@@ -54,6 +54,9 @@ dependencies {
     implementation("io.jmix.maps:jmix-maps-ui-starter")
     widgets("io.jmix.maps:jmix-maps-ui-widgets")
     widgets("io.jmix.ui:jmix-ui-widgets")
+    implementation("io.jmix.translations:jmix-translations-ru")
+    implementation("io.jmix.translations:jmix-translations-ru")
+    implementation("io.jmix.translations:jmix-translations-ru")
 }
 
 test {

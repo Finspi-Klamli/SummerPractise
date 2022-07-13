@@ -27,7 +27,6 @@ public class OrderEdit extends StandardEditor<Order> {
     @Autowired
     private EntitySuggestionField<Restaurant> restaurantField;
 
-
     @Install(to = "map.restaurantLayer", subject = "tooltipContentProvider")
     private String mapRestaurantLayerTooltipContentProvider(Restaurant restaurant) {
         return restaurant.getName();
@@ -46,11 +45,6 @@ public class OrderEdit extends StandardEditor<Order> {
             return;
         }
         min.ifPresent(restaurant -> restaurantField.setValue(restaurant));
-    }
-
-    @Subscribe("restaurantField")
-    public void onRestaurantFieldValueChange(HasValue.ValueChangeEvent<Restaurant> event) {
-        System.out.println("(((((");
     }
 
     @Install(to = "map.deliveryAreaLayer", subject = "styleProvider")

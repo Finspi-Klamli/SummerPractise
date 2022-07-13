@@ -5,12 +5,21 @@
         caption="msg://orderBrowse.caption"
         focusComponent="ordersTable">
     <data readOnly="true">
+        <collection id="orderDc"
+                    class="com.belov.jmixapplication.entity.Order">
+            <fetchPlan extends="_base"/>
+            <loader id="orderDl">
+                <query>
+                    <![CDATA[select e from Order_ e]]>
+                </query>
+            </loader>
+        </collection>
         <collection id="ordersDc"
                     class="com.belov.jmixapplication.entity.Order">
             <fetchPlan extends="_base"/>
             <loader id="ordersDl">
                 <query>
-                    <![CDATA[select e from Order_ e]]>
+                    <![CDATA[select e from Order_ e where e.executionFlag=false]]>
                 </query>
             </loader>
         </collection>
@@ -23,6 +32,7 @@
                 </query>
             </loader>
         </collection>
+
         <collection id="deliveryAreaDc"
                     class="com.belov.jmixapplication.entity.DeliveryArea">
             <fetchPlan extends="_base"/>
@@ -51,12 +61,12 @@
                 width="800"/>
     <layout expand="ordersTable" spacing="true">
         <filter id="filter"
-                dataLoader="ordersDl" visible="false">
+                dataLoader="orderDl" visible="false">
             <properties include=".*"/>
         </filter>
         <groupTable id="ordersTable"
                     width="100%"
-                    dataContainer="ordersDc">
+                    dataContainer="orderDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -79,8 +89,8 @@
         <maps:geoMap id="map" height="400px" width="600px" centerX="-97.327194"  centerY="37.681918" zoom="12">
             <maps:layers>
                 <maps:tile id="tileLayer" tileProvider="map_OpenStreetMap"/>
-                <maps:vector id="orderLayer" dataContainer="ordersDc"/>
                 <maps:vector id="restaurantLayer" dataContainer="restaurantsDc"/>
+                <maps:vector id="orderLayer" dataContainer="ordersDc"/>
                 <maps:vector id="deliveryAreaLayer" dataContainer="deliveryAreaDc"/>
             </maps:layers>
         </maps:geoMap>

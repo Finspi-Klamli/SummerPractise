@@ -17,11 +17,6 @@ public class OrderBrowse extends StandardLookup<Order> {
     @Autowired
     private GeometryStyles geometryStyles;
 
-    @Install(to = "map.orderLayer", subject = "tooltipContentProvider")
-    private String mapRestaurantLayerTooltipContentProvider(Order order) {
-        return order.getInstanceName();
-    }
-
     @Install(to = "map.orderLayer", subject = "styleProvider")
     private GeometryStyle setOrderStyleProvider(Order order) {
         if(order.getRestaurant() == null)
