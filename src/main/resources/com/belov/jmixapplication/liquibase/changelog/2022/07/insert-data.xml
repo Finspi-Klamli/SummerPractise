@@ -65,6 +65,7 @@
             <column name="ID">879d1154-02de-11ed-b939-0242ac120002</column>
             <column name="username">admin</column>
             <column name="password">admin</column>
+            <column name="VERSION">1</column>
         </insert>
     </changeSet>
 </databaseChangeLog>
